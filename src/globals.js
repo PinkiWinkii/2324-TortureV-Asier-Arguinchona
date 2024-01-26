@@ -7,7 +7,7 @@ export default{
     ctx: {},
 
     //Estado de juego. Inicializamos a INVÁLIDO
-    gameState: Game.PLAYING,
+    gameState: Game.LOAD_PLAYING,
 
     //Tiempo de ciclo anterior (milliseconds)
     previousCycleMilliseconds: -1,
@@ -29,7 +29,6 @@ export default{
     action: {},
 
     //Game timers
-    levelTime: {},
     movementTime: {},
     spiderMovementTime: {},
 

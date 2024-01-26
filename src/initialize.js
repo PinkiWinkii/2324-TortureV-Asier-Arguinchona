@@ -131,7 +131,6 @@ function initTimers()
     //Creamos timer 
     globals.movementTime = new Timer(0.2, 0.15);
     globals.spiderMovementTime = new Timer(0.2, 0.15);
-    globals.levelTime = new Timer(180, 1);
 }
 
 export {
