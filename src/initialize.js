@@ -1,10 +1,11 @@
 import globals from "./globals.js";
 import { Level, Level1 } from "./Levels.js";
 import Timer from "./Timer.js";
-import { Game, FPS, State, ID, Icons} from "./constants.js";
+import { Game, FPS, State, ID, Icons, moneyPos} from "./constants.js";
 import Player from "./Element.js";
 import { keydownHandler, keyupHandler } from "./events.js";
 import Element from "./Element.js";
+import { checkearZero } from "./gameLogic.js";
 
 //Función que inicializa los elementos HTML
 function initHTMLelements()
@@ -57,6 +58,7 @@ function initGameElements()
     //console.log("INIT ELEMENTS");
 
     initPlayer();
+    initMoney();
     //console.log(globals.gameElements);
 }
 
@@ -76,10 +78,31 @@ function initPlayer()
     const id = ID.PLAYER_ID;
     const icon = Icons.PLAYER;
 
-    //Creamos 
+    //Creamos el elemento
     const player = new Element(id, state, icon, xInit, yInit, xPos, yPos);
 
     globals.gameElements.push(player);
+}
+
+function initMoney()
+{
+    console.log("init money");
+
+    const randomSpawn = Math.floor(Math.random() * 6);
+
+    const xInit = moneyPos.xPos[randomSpawn];
+    const yInit = moneyPos.yPos[randomSpawn];
+
+    const xPos = xInit;
+    const yPos = yInit;
+
+    const state = State.STILL;
+    const id = ID.MONEY_ID;
+    const icon = Icons.MONEY;
+
+    //Creamos el elemento
+    const money = new Element(id, state, icon, xInit, yInit, xPos, yPos);
+    globals.gameElements.push(money);
 }
 
 function initTimers()
@@ -90,11 +113,13 @@ function initTimers()
 }
 
 
+
 export {
     initHTMLelements,
     initLevel,
     initEvents,
     initTimers, 
     initVars,
-    initGameElements
+    initGameElements,
+    initMoney
 }

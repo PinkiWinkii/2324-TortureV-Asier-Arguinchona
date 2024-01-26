@@ -1,4 +1,9 @@
 
+export const moneyPos = {
+    xPos: [3, 3, 3, 14, 14, 14],
+    yPos: [1, 4, 10, 1, 4, 10],
+}
+
 export const State = {
     OFF: -1,
     STILL: 1,

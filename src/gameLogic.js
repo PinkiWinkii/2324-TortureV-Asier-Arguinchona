@@ -1,6 +1,6 @@
 import globals from "./globals.js";
 import { Game, ID, Key, State } from "./constants.js";
-import { initGameElements } from "./initialize.js";
+import { initGameElements, initMoney } from "./initialize.js";
 
 export default function update()
 {
@@ -43,6 +43,7 @@ function updateElements()
         const element = globals.gameElements[i];
         if(element.state === State.OFF)
         {
+            globals.gameElements.splice(i, 1);
             //Borramos
         }
         else
@@ -63,10 +64,21 @@ function updateElement(element)
             updatePlayer(element);
             break;
 
+        case ID.MONEY_ID:
+            updateMoney(element);
+            break;
         default:
             console.log("Not a valid ID");
     }
 }
+
+function updateMoney(element)
+{
+    checkIfIsCollidingWithPlayer(element);
+    console.log("ESTA UPDATEANDO EL MONEY");
+}
+
+
 
 function updatePlayer(element)
 {
@@ -130,7 +142,6 @@ function updatePlayer(element)
         }
     }
 
-
     //console.log(element.state);
     //console.log(globals.action);
 }
@@ -188,53 +199,96 @@ function detectCollisions(element)
 {
     const levelData = globals.level.data;
 
-    console.log(levelData[element.yPos][element.xPos]);
+    //console.log(levelData[element.yPos][element.xPos]);
 
     if(levelData[element.yPos + 1][element.xPos] === 1)
     {
         element.isCollidingWithBottom = true;
-        console.log("MURO ABAJO");
+        //console.log("MURO ABAJO");
     }
     else
     {
         element.isCollidingWithBottom = false;
-        console.log("NO HAY MURO ABAJO");
+        //console.log("NO HAY MURO ABAJO");
     }
 
     if(levelData[element.yPos - 1][element.xPos] === 1)
     {
         element.isCollidingWithTop = true;
-        console.log("MURO ARRIBA");
+        //console.log("MURO ARRIBA");
     }
     else
     {
         element.isCollidingWithTop = false;
-        console.log("NO HAY MURO ARRIBA");
+        //console.log("NO HAY MURO ARRIBA");
     }
 
     if(levelData[element.yPos][element.xPos + 1] === 1)
     {
         element.isCollidingWithRight = true;
-        console.log("MURO DERECHA");
+        //console.log("MURO DERECHA");
     }
     else
     {
         element.isCollidingWithRight = false;
-        console.log("NO HAY MURO DERECHA");
+        //console.log("NO HAY MURO DERECHA");
     }
 
     if(levelData[element.yPos][element.xPos - 1] === 1)
     {
         element.isCollidingWithLeft = true;
-        console.log("MURO IZQUIERDA");
+        //console.log("MURO IZQUIERDA");
     }
     else
     {
         element.isCollidingWithLeft = false;
-        console.log("NO HAY MURO IZQUIERDA");
+        //console.log("NO HAY MURO IZQUIERDA");
     }
-    //console.log(levelData[element.xPos + 1][levelData[element.yPos]]);
 
+}
 
+function checkIfIsCollidingWithPlayer(element)
+{
+    const player = globals.gameElements.find(element => element.id === ID.PLAYER_ID);
 
+    switch(element.id)
+    {
+        case ID.MONEY_ID:
+            if(element.xPos === player.xPos && element.yPos === player.yPos)
+            {
+                element.state = State.OFF;
+                console.log("COLISONA CON PLAYER");
+                globals.score += 100;
+                initMoney();
+            }
+            break;
+        case ID.SPIDER_ID:
+            //Colisiona con la araña
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+export function checkearZero()
+{
+    const coordenadasZero = [];
+    const levelData = globals.level.data;
+
+    for(let i = 0; i < Map.NUM_FIL; i++)
+    {
+        for(let j = 0; j < Map.NUM_COL; j++)
+        {
+            if(levelData[i][j] === 0)
+            {
+                coordenadasZero.push({ row: i, column: j });
+                console.log(coordenadasZero);
+            }
+
+        }
+    }
+
+    return coordenadasZero;
 }
