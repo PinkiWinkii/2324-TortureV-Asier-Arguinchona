@@ -1,4 +1,12 @@
 
+export const Icons = {
+    PLAYER: "\u{1F474}",
+    SPIDER: "\u{1F577}",
+    MONEY:  "\u{1F4B5}",
+    LIFE:   "\u{1F49A}",
+    WALL:   "\u2B1C",
+    SCORE:  "SCORE",
+}
 
 export const Game = {
     OVER: -1,

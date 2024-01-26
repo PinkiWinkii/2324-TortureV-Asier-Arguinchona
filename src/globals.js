@@ -15,4 +15,7 @@ export default{
     //Tiempo de ciclo de juego real (seconds)
     deltaTime: 0,
     cycleRealTime: 0,
+
+    //Declaramos la variable de la puntuación
+    score: 0,
 }
