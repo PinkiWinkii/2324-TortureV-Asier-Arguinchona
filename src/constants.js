@@ -18,7 +18,7 @@ export const Tile = {
     TILE_16: 0,
 };
 
-export const Data = {
+export const Map = {
     NUM_FIL: 12,
     NUM_COL: 17,
 };

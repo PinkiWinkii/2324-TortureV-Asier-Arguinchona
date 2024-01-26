@@ -24,13 +24,13 @@ function initHTMLelements()
 
 function initVars()
 {
-        //Inicializamos las variables de gestión de tiempo
-        globals.previousCycleMilliseconds = 0;
-        globals.deltaTime = 0;
-        globals.frameTimeObj = 1 / FPS; //Frame time in seconds
-    
-        //Inicializamos el estado del juego
-        globals.gameState = Game.PLAYING;
+    //Inicializamos las variables de gestión de tiempo
+    globals.previousCycleMilliseconds = 0;
+    globals.deltaTime = 0;
+    globals.frameTimeObj = 1 / FPS; //Frame time in seconds
+
+    //Inicializamos el estado del juego
+    globals.gameState = Game.PLAYING;
 }
 
 function initLevel()

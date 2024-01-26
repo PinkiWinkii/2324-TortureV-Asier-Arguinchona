@@ -2,7 +2,9 @@ import globals from "./globals.js";
 
 import {initHTMLelements, initLevel, initEvents, initTimers} from "./initialize.js"
 
+import update from "./gameLogic.js";
 import render from "./gameRender.js";
+import { Game } from "./constants.js";
 
 window.onload = init;
 
@@ -13,8 +15,6 @@ function init()
 
     //Inicializamos el mapa del juego
     initLevel();
-
-    console.log("AQUI TA");
 
     //Inicializacion de timers
     initTimers();
@@ -29,7 +29,8 @@ function init()
 
 //Bucle principal de ejecución
 function gameLoop(timeStamp)
-{
+{  
+
     // Keep requesting new frames
     window.requestAnimationFrame(gameLoop, globals.canvas);
 
