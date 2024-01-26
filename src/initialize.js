@@ -1,7 +1,7 @@
 import globals from "./globals.js";
 import { Level, Level1 } from "./Levels.js";
 import Timer from "./Timer.js";
-import { Game, FPS, State, ID} from "./constants.js";
+import { Game, FPS, State, ID, Icons} from "./constants.js";
 import Player from "./Element.js";
 import { keydownHandler, keyupHandler } from "./events.js";
 import Element from "./Element.js";
@@ -72,8 +72,8 @@ function initPlayer()
     console.log("INIT PLAYER");
 
     //Posiciones iniciales
-    const xInit = 7;
-    const yInit = 8;
+    const xInit = 8;
+    const yInit = 9;
 
     //Posiciones del player (al principio serán las mismas que las iniciales)
     const xPos = xInit;
@@ -81,9 +81,10 @@ function initPlayer()
 
     const state = State.STILL;
     const id = ID.PLAYER_ID;
-    
+    const icon = Icons.PLAYER;
+
     //Creamos 
-    const player = new Element(id, state, xInit, yInit, xPos, yPos);
+    const player = new Element(id, state, icon, xInit, yInit, xPos, yPos);
 
     globals.gameElements.push(player);
 }

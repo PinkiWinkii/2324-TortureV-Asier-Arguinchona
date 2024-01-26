@@ -80,7 +80,7 @@ function updatePlayer(element)
     {
         case State.RIGHT:
             element.xPos += 1;
-            break;
+            break; 
         
         case State.LEFT:
             element.xPos -= 1;

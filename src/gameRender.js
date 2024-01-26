@@ -84,7 +84,7 @@ function drawElement(element)
         {
             if(i === element.yPos && j === element.xPos)
             {
-                globals.ctx.fillText(Icons.PLAYER, i*Map.BRICKSIZE + Map.X_OFFSET, j*Map.BRICKSIZE + Map.Y_OFFSET);
+                globals.ctx.fillText(element.icon, j*Map.BRICKSIZE + Map.X_OFFSET, i*Map.BRICKSIZE + Map.Y_OFFSET);
             }
         }
     }
