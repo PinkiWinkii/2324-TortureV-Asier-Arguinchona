@@ -1,6 +1,6 @@
 import globals from "./globals.js";
 
-import {initHTMLelements} from "./initialize.js"
+import {initHTMLelements, initLevel} from "./initialize.js"
 
 import render from "./gameRender.js";
 

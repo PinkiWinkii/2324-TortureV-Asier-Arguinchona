@@ -18,5 +18,13 @@ function initHTMLelements()
 
 function initLevel()
 {
-    
+    //Creamos y guardamos nuestro nivel
+    globals.level = new Level(Level1);
+}
+
+function initEvents()
+{
+    //Add the keyboard event listeners
+    window.addEventListener("keydown",  keydownHandler,  false);
+    window.addEventListener("keyup",    keyupHandler,    false);
 }
