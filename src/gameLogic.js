@@ -17,7 +17,7 @@ export default function update()
         case Game.OVER:
             //SE ha acabado la partida
             break;
-            
+
         default:
             break;
     }
@@ -252,24 +252,24 @@ function checkIfCanMove(element)
 function checkIfSpiderCanMove(element)
 {
     //Incrementamos el contador de cambio de valor
-    globals.movementTime.timeChangeCounter += globals.deltaTime;
+    globals.spiderMovementTime.timeChangeCounter += globals.deltaTime;
 
     //Si ha pasado el tiempo necesario, cambiamos el valor del timer
-    if(globals.movementTime.timeChangeCounter > globals.movementTime.timeChangeValue)
+    if(globals.spiderMovementTime.timeChangeCounter > globals.spiderMovementTime.timeChangeValue)
     {
 
-        globals.movementTime.value--;
+        globals.spiderMovementTime.value--;
 
         //Reseteamos timeChanegCounter
-        globals.movementTime.timeChangeCounter = 0;
+        globals.spiderMovementTime.timeChangeCounter = 0;
     }
 
 
-    if(globals.movementTime.value < 0)
+    if(globals.spiderMovementTime.value < 0)
     {
         element.canMove = true;     
         
-        globals.movementTime.value = 0.2;
+        globals.spiderMovementTime.value = 0.2;
     }
 }
 
@@ -383,25 +383,4 @@ function checkIfIsCollidingWithPlayer(element)
 function resetVariables()
 {
     globals.gameElements = [];
-}
-
-export function checkearZero()
-{
-    const coordenadasZero = [];
-    const levelData = globals.level.data;
-
-    for(let i = 0; i < Map.NUM_FIL; i++)
-    {
-        for(let j = 0; j < Map.NUM_COL; j++)
-        {
-            if(levelData[i][j] === 0)
-            {
-                coordenadasZero.push({ row: i, column: j });
-                console.log(coordenadasZero);
-            }
-
-        }
-    }
-
-    return coordenadasZero;
 }

@@ -31,10 +31,11 @@ export default{
     //Game timers
     levelTime: {},
     movementTime: {},
+    spiderMovementTime: {},
 
     //Game elements
     gameElements: [],
 
     //Variable de la vida
-    life: 1,
+    life: 3,
 }

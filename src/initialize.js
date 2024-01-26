@@ -5,8 +5,6 @@ import { Game, FPS, State, ID, Icons, moneyPos, spiderPos} from "./constants.js"
 import Player from "./Element.js";
 import { keydownHandler, keyupHandler } from "./events.js";
 import Element from "./Element.js";
-import { checkearZero } from "./gameLogic.js";
-
 //Función que inicializa los elementos HTML
 function initHTMLelements()
 {
@@ -61,12 +59,13 @@ function initGameElements()
     initPlayer();
     initMoney();
     initSpider();
+
     //console.log(globals.gameElements);
 }
 
 function initPlayer()
 {
-    console.log("INIT PLAYER");
+    //console.log("INIT PLAYER");
 
     //Posiciones iniciales
     const xInit = 8;
@@ -109,7 +108,7 @@ function initMoney()
 
 function initSpider()
 {
-    console.log("init spider");
+    //console.log("init spider");
     const randomSpawn = Math.floor(Math.random() * 4);
 
     const xInit = spiderPos.xPos[randomSpawn];
@@ -130,11 +129,10 @@ function initSpider()
 function initTimers()
 {
     //Creamos timer 
-    globals.movementTime = new Timer(0.2, 0.1);
+    globals.movementTime = new Timer(0.2, 0.15);
+    globals.spiderMovementTime = new Timer(0.2, 0.15);
     globals.levelTime = new Timer(180, 1);
 }
-
-
 
 export {
     initHTMLelements,
