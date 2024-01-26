@@ -1,6 +1,6 @@
 import globals from "./globals.js";
 
-import {initHTMLelements, initLevel, initEvents, initTimers} from "./initialize.js"
+import {initHTMLelements, initLevel, initEvents, initTimers, initVars} from "./initialize.js"
 
 import update from "./gameLogic.js";
 import render from "./gameRender.js";
@@ -13,6 +13,9 @@ function init()
     //Inicializamos los elementos HTML: Canvas, Context, Caja de texto de pruebas
     initHTMLelements();
 
+    //Inicializamos las variables
+    initVars();
+
     //Inicializamos el mapa del juego
     initLevel();
 
@@ -24,6 +27,7 @@ function init()
 
     //Start the first frame request
     window.requestAnimationFrame(gameLoop);
+
 
 }
 

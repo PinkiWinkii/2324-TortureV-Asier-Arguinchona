@@ -29,7 +29,14 @@ function initVars()
     globals.frameTimeObj = 1 / FPS; //Frame time in seconds
 
     //Inicializamos el estado del juego
-    globals.gameState = Game.PLAYING;
+    globals.gameState = Game.LOAD_PLAYING;
+
+    globals.action = {
+        moveLeft: false,
+        moveRight: false,
+        moveUp: false,
+        moveDown: false,
+    }
 }
 
 function initLevel()
@@ -53,11 +60,16 @@ function initTimers()
 
 function initGameElements()
 {
+    //console.log("INIT ELEMENTS");
+
     initPlayer();
+    //console.log(globals.gameElements);
 }
 
 function initPlayer()
 {
+    console.log("INIT PLAYER");
+
     //Posiciones iniciales
     const xInit = 7;
     const yInit = 8;
@@ -66,7 +78,7 @@ function initPlayer()
     const xPos = xInit;
     const yPos = yInit;
 
-    const state = State.ON;
+    const state = State.STILL;
     const id = ID.PLAYER_ID;
     
     //Creamos 

@@ -9,6 +9,8 @@ export default function render()
         case Game.LOAD_PLAYING:
             //Cargamos
             loadPlaying();
+            break;
+
         case Game.PLAYING:
             renderGame();
             //Jugando
@@ -38,6 +40,7 @@ function renderGame()
 
    renderMap();
 
+
    renderPlayer();
 }
 
@@ -60,8 +63,8 @@ function renderMap()
 
 function renderPlayer()
 {
+   
     const levelData = globals.level.data;
-
 
     for(let i = 0; i < Map.NUM_FIL; i++)
     {

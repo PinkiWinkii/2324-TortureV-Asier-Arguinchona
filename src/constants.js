@@ -1,7 +1,11 @@
 
 export const State = {
-    OFF: 0,
-    ON: 1,
+    OFF: -1,
+    STILL: 1,
+    UP: 2,
+    DOWN: 3,
+    LEFT: 4,
+    RIGHT: 5,
 }
 
 export const ID = {
