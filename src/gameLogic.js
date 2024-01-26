@@ -18,4 +18,11 @@ function playGame()
 {
     initGameElements();
     //console.log("ESTAMOS EN PLAYGAME");
+    updatePlayer();
+
+}
+
+function updatePlayer()
+{
+    readKeyboardAndMovePlayer()
 }

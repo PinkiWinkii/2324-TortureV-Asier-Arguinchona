@@ -1,4 +1,10 @@
 
+export const ID = {
+    PLAYER_ID: 0,
+    SPIDER_ID: 1,
+    MONEY_ID: 2,
+}
+
 export const Icons = {
     PLAYER: "\u{1F474}",
     SPIDER: "\u{1F577}",

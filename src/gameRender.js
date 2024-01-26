@@ -1,6 +1,6 @@
 import globals from "./globals.js";
 import {Game, Icons, Map} from "./constants.js";
-import Player from "./Player.js";
+import Player from "./Element.js";
 
 export default function render()
 {

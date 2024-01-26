@@ -1,9 +1,10 @@
 import globals from "./globals.js";
 import { Level, Level1 } from "./Levels.js";
 import Timer from "./Timer.js";
-import { Game, FPS } from "./constants.js";
-import Player from "./Player.js";
+import { Game, FPS, ID } from "./constants.js";
+import Player from "./Element.js";
 import { keydownHandler, keyupHandler } from "./events.js";
+import GameElement from "./Element.js";
 
 //Función que inicializa los elementos HTML
 function initHTMLelements()
@@ -57,16 +58,21 @@ function initGameElements()
 
 function initPlayer()
 {
+    //Posiciones iniciales
     const xInit = 7;
     const yInit = 8;
 
+    //Posiciones del player (al principio serán las mismas que las iniciales)
     const xPos = xInit;
     const yPos = yInit;
 
-    const player = new Player(xInit, yInit, xPos, yPos);
+    //Creamos 
+    const player = new Element(ID.PLAYER_ID, xInit, yInit, xPos, yPos);
 
     globals.gameElements.push(player);
 }
+
+
 
 export {
     initHTMLelements,
