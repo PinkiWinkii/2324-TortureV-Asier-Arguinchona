@@ -16,6 +16,7 @@ export default function render()
             //Jugando
             break;
         case Game.OVER:
+            renderOver();
             //Se acaba la partida
             break;
 
@@ -34,17 +35,33 @@ function renderGame()
     //Borramos la pantalla entera
     globals.ctx.clearRect(0,0, globals.canvas.width, globals.canvas.height);
 
-    const SCORE = globals.score;
 
-    //console.log("RENDER GAME");
-    globals.ctx.fillStyle = 'white';
-    globals.ctx.font = '14px emulogic';
-    globals.ctx.fillText("SCORE: ", 15, 15)
-    globals.ctx.fillText(SCORE, 140, 15); 
+
+    renderHUD();
 
     renderMap();
 
     renderElements();
+}
+
+function renderHUD()
+{
+    const SCORE = globals.score;
+    const LIFE = globals.life;
+
+    const startingX = 200;
+    const startingY = 20;
+
+    //console.log("RENDER GAME");
+    globals.ctx.fillStyle = 'white';
+    globals.ctx.font = '14px emulogic';
+    globals.ctx.fillText("SCORE: ", 15, startingY)
+    globals.ctx.fillText(SCORE, 140, startingY); 
+
+    for(let i = 1; i <= LIFE; ++i)
+    {
+        globals.ctx.fillText(Icons.LIFE, startingX+25*i, startingY)
+    }
 }
 
 function renderMap()

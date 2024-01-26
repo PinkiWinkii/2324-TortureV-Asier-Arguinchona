@@ -1,5 +1,5 @@
 import globals from "./globals.js";
-import { Game, ID, Key, State } from "./constants.js";
+import { Game, ID, Key, State, spiderMovement} from "./constants.js";
 import { initGameElements, initMoney } from "./initialize.js";
 
 export default function update()
@@ -88,16 +88,24 @@ function updateSpider(element)
 {
     if(!element.canMove)
     {
+
         checkIfSpiderCanMove(element);
     }
 
+    detectCollisions(element);
+
     checkIfIsCollidingWithPlayer(element);
+    
+    let randomMovement = Math.floor(Math.random() * 4);
+
+    
+    //console.log(spiderMovement.POSSIBLE_MOVEMENTS[randomMovement]);
 
     if(element.canMove)
     {
-        switch(element.state)
+        switch(spiderMovement.POSSIBLE_MOVEMENTS[randomMovement])
         {
-            case State.RIGHT:
+            case 0:
                 if(!element.isCollidingWithRight)
                 {
                     element.xPos += 1;
@@ -105,7 +113,7 @@ function updateSpider(element)
                 }
                 break; 
             
-            case State.LEFT:
+            case 1:
                 if(!element.isCollidingWithLeft)
                 {
                     element.xPos -= 1;
@@ -113,7 +121,7 @@ function updateSpider(element)
                 }
                 break;
             
-            case State.UP:
+            case 2:
                 if(!element.isCollidingWithTop)
                 {
                     element.yPos -= 1
@@ -121,7 +129,7 @@ function updateSpider(element)
                 }
                 break;
     
-            case State.DOWN:
+            case 3:
                 if(!element.isCollidingWithBottom)
                 {
                     element.yPos += 1;
@@ -129,14 +137,13 @@ function updateSpider(element)
                 }
                 break;
             
-            case State.STILL:
-                //No se mueve
-                break;
             default:
                 //A rellenar
                 break;
         }
     }
+
+    
 }
 
 function updatePlayer(element)

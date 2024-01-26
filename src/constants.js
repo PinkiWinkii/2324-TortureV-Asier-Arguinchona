@@ -1,3 +1,6 @@
+export const spiderMovement = {
+    POSSIBLE_MOVEMENTS: [0, 1, 2, 3],
+}
 
 export const moneyPos = {
     xPos: [3, 3, 3, 14, 14, 14],
