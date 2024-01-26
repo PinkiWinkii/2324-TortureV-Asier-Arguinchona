@@ -1,9 +1,10 @@
 export default class Element
 {
-    constructor(id, state, xInit, yInit, xPos, yPos)
+    constructor(id, state, icon, xInit, yInit, xPos, yPos)
     {
         this.id     = id;
         this.state  = state;
+        this.icon   = icon;
         this.xInit  = xInit;
         this.yInit  = yInit;
         this.xPos   = xPos;

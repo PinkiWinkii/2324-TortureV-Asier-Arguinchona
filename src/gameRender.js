@@ -26,22 +26,25 @@ function loadPlaying()
 {
     //Borramos la pantalla entera
     globals.ctx.clearRect(0,0, globals.canvas.width, globals.canvas.height);
+
 }
 
 function renderGame()
 {
-   const SCORE = globals.score;
+    //Borramos la pantalla entera
+    globals.ctx.clearRect(0,0, globals.canvas.width, globals.canvas.height);
 
-   //console.log("RENDER GAME");
-   globals.ctx.fillStyle = 'white';
-   globals.ctx.font = '14px emulogic';
-   globals.ctx.fillText("SCORE: ", 15, 15)
-   globals.ctx.fillText(SCORE, 140, 15); 
+    const SCORE = globals.score;
 
-   renderMap();
+    //console.log("RENDER GAME");
+    globals.ctx.fillStyle = 'white';
+    globals.ctx.font = '14px emulogic';
+    globals.ctx.fillText("SCORE: ", 15, 15)
+    globals.ctx.fillText(SCORE, 140, 15); 
 
+    renderMap();
 
-   renderPlayer();
+    renderElements();
 }
 
 function renderMap()
@@ -61,20 +64,28 @@ function renderMap()
     }
 }
 
-function renderPlayer()
+function renderElements()
 {
-   
+    for(let i = 0; i < globals.gameElements.length; ++i)
+    {
+        const element = globals.gameElements[i];
+
+        drawElement(element);
+    }
+}
+
+function drawElement(element)
+{
     const levelData = globals.level.data;
 
     for(let i = 0; i < Map.NUM_FIL; i++)
     {
         for(let j = 0; j < Map.NUM_COL; j++)
         {
-            if(i === globals.gameElements[0].xPos && j === globals.gameElements[0].yPos)
+            if(i === element.yPos && j === element.xPos)
             {
-                globals.ctx.fillText(Icons.PLAYER, j*Map.BRICKSIZE + Map.X_OFFSET, i*Map.BRICKSIZE + Map.Y_OFFSET);
+                globals.ctx.fillText(Icons.PLAYER, i*Map.BRICKSIZE + Map.X_OFFSET, j*Map.BRICKSIZE + Map.Y_OFFSET);
             }
-
         }
     }
 }

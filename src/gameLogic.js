@@ -29,10 +29,8 @@ function loadPlaying()
 
 function playGame()
 {
-
     //console.log("ESTAMOS EN PLAYGAME");
     updateElements();
-    updatePlayer();
 
 }
 
@@ -45,7 +43,7 @@ function updateElements()
         const element = globals.gameElements[i];
         if(element.state === State.OFF)
         {
-
+            //Borramos
         }
         else
         {
@@ -56,13 +54,12 @@ function updateElements()
 
 function updateElement(element)
 {
-
     const type = element.id;
     switch (type)
     {
         //Caso del player
         case ID.PLAYER_ID:
-
+            //console.log(element);
             updatePlayer(element);
             break;
 
@@ -73,34 +70,63 @@ function updateElement(element)
 
 function updatePlayer(element)
 {
+    //console.log(element);
 
     //console.log("UPDATE PLAYER");
+
     readKeyboardAndMovePlayer(element)
+
+    switch(element.state)
+    {
+        case State.RIGHT:
+            element.xPos += 1;
+            break;
+        
+        case State.LEFT:
+            element.xPos -= 1;
+            break;
+        
+        case State.UP:
+            element.yPos -= 1
+            break;
+
+        case State.DOWN:
+            element.yPos += 1;
+            break;
+        
+        case State.STILL:
+            //No se mueve
+            break;
+        default:
+            //A rellenar
+            break;
+    }
+
+    console.log(element.state);
     //console.log(globals.action);
 }
 
 function readKeyboardAndMovePlayer(element)
 {
     
-    // if(globals.action.moveRight)
-    // {
-    //     element.state = State.RIGHT;
-    // }
-    // else if(globals.action.moveLeft)
-    // {
-    //     element.state = State.LEFT;
-    // }
-    // else if(globals.action.moveUp)
-    // {
-    //     element.state = State.UP;
-    // }
-    // else if(globals.action.moveDown)
-    // {
-    //     element.state = State.DOWN;
-    // }
-    // else
-    // {
-    //     console.log("AQUI");
-    //     element.state = State.STILL;
-    // }
+    if(globals.action.moveRight)
+    {
+        element.state = State.RIGHT;
+    }
+    else if(globals.action.moveLeft)
+    {
+        element.state = State.LEFT;
+    }
+    else if(globals.action.moveUp)
+    {
+        element.state = State.UP;
+    }
+    else if(globals.action.moveDown)
+    {
+        element.state = State.DOWN;
+    }
+    else
+    {
+        element.state = State.STILL;
+    }
 }

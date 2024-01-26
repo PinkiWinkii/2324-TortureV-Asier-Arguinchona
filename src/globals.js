@@ -30,6 +30,7 @@ export default{
 
     //Game timers
     levelTime: {},
+    movementTime: {},
 
     //Game elements
     gameElements: [],

@@ -55,6 +55,7 @@ function initEvents()
 function initTimers()
 {
     //Creamos timer 
+    globals.movementTime = new Timer(0.2, 1);
     globals.levelTime = new Timer(180, 1);
 }
 
