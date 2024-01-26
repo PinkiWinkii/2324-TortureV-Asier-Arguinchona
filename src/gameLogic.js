@@ -86,8 +86,57 @@ function updateMoney(element)
 
 function updateSpider(element)
 {
+    if(!element.canMove)
+    {
+        checkIfSpiderCanMove(element);
+    }
 
     checkIfIsCollidingWithPlayer(element);
+
+    if(element.canMove)
+    {
+        switch(element.state)
+        {
+            case State.RIGHT:
+                if(!element.isCollidingWithRight)
+                {
+                    element.xPos += 1;
+                    element.canMove = false;
+                }
+                break; 
+            
+            case State.LEFT:
+                if(!element.isCollidingWithLeft)
+                {
+                    element.xPos -= 1;
+                    element.canMove = false;
+                }
+                break;
+            
+            case State.UP:
+                if(!element.isCollidingWithTop)
+                {
+                    element.yPos -= 1
+                    element.canMove = false;
+                }
+                break;
+    
+            case State.DOWN:
+                if(!element.isCollidingWithBottom)
+                {
+                    element.yPos += 1;
+                    element.canMove = false;
+                }
+                break;
+            
+            case State.STILL:
+                //No se mueve
+                break;
+            default:
+                //A rellenar
+                break;
+        }
+    }
 }
 
 function updatePlayer(element)
@@ -157,6 +206,30 @@ function updatePlayer(element)
 }
 
 function checkIfCanMove(element)
+{
+    //Incrementamos el contador de cambio de valor
+    globals.movementTime.timeChangeCounter += globals.deltaTime;
+
+    //Si ha pasado el tiempo necesario, cambiamos el valor del timer
+    if(globals.movementTime.timeChangeCounter > globals.movementTime.timeChangeValue)
+    {
+
+        globals.movementTime.value--;
+
+        //Reseteamos timeChanegCounter
+        globals.movementTime.timeChangeCounter = 0;
+    }
+
+
+    if(globals.movementTime.value < 0)
+    {
+        element.canMove = true;     
+        
+        globals.movementTime.value = 0.2;
+    }
+}
+
+function checkIfSpiderCanMove(element)
 {
     //Incrementamos el contador de cambio de valor
     globals.movementTime.timeChangeCounter += globals.deltaTime;
