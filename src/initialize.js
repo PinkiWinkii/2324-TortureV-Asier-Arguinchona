@@ -1,12 +1,9 @@
 import globals from "./globals.js";
-
 import { Level, Level1 } from "./Levels.js";
-
 import Timer from "./Timer.js";
-
 import { Game, FPS } from "./constants.js";
-
 import Player from "./Player.js";
+import { keydownHandler, keyupHandler } from "./events.js";
 
 //Función que inicializa los elementos HTML
 function initHTMLelements()
@@ -43,8 +40,8 @@ function initLevel()
 function initEvents()
 {
     //Add the keyboard event listeners
-    // window.addEventListener("keydown",  keydownHandler,  false);
-    // window.addEventListener("keyup",    keyupHandler,    false);
+    window.addEventListener("keydown",  keydownHandler,  false);
+    window.addEventListener("keyup",    keyupHandler,    false);
 }
 
 function initTimers()

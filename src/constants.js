@@ -34,8 +34,8 @@ export const Block = {
 export const FPS = 30;
 
 export const Key = {
-    ARROW_UP: 38,
-    ARROW_LEFT: 37,
-    ARROW_DOWN: 40,
-    ARROW_RIGHT: 39
+    UP: 38,
+    LEFT: 37,
+    DOWN: 40,
+    RIGHT: 39
 }
