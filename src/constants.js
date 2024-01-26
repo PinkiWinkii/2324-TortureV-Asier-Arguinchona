@@ -1,4 +1,9 @@
 
+export const State = {
+    OFF: 0,
+    ON: 1,
+}
+
 export const ID = {
     PLAYER_ID: 0,
     SPIDER_ID: 1,
