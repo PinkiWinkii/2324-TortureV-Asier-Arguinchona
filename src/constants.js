@@ -11,6 +11,7 @@ export const Icons = {
 export const Game = {
     OVER: -1,
     PLAYING: 0,
+    LOAD_PLAYING: 1,
 };
 
 export const Tile = {

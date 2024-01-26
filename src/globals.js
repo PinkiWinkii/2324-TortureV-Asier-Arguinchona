@@ -18,4 +18,13 @@ export default{
 
     //Declaramos la variable de la puntuación
     score: 0,
+
+    //Datos del nivel
+    level: {},
+
+    //Objeto que guarda el estado de la tecla pulsada
+    action: {},
+
+    //Game timers
+    levelTime: {},
 }
