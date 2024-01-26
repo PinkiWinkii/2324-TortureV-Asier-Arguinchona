@@ -1,5 +1,5 @@
 import globals from "./globals.js";
-import constants from "./constants.js";
+import {Game} from "./constants.js";
 
 export default function render()
 {
@@ -11,6 +11,6 @@ export default function render()
         case Game.OVER:
             //Se acaba la partida
             break;
-            
+
     }
 }
