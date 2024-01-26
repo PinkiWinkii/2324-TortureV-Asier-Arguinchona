@@ -1,6 +1,9 @@
 import globals from "./globals.js";
 
 import { Level, Level1 } from "./Levels.js";
+
+import Timer from "./Timer.js";
+
 //Función que inicializa los elementos HTML
 function initHTMLelements()
 {
@@ -27,4 +30,17 @@ function initEvents()
     //Add the keyboard event listeners
     window.addEventListener("keydown",  keydownHandler,  false);
     window.addEventListener("keyup",    keyupHandler,    false);
+}
+
+function initTimers()
+{
+    //Creamos timer 
+    globals.levelTime = new Timer(180, 1);
+}
+
+export {
+    initHTMLelements,
+    initLevel,
+    initEvents,
+    initTimers
 }
