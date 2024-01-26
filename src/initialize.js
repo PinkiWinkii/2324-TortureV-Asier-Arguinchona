@@ -1,6 +1,6 @@
 import globals from "./globals.js";
 
-
+import { Level, Level1 } from "./Levels.js";
 //Función que inicializa los elementos HTML
 function initHTMLelements()
 {
@@ -14,4 +14,9 @@ function initHTMLelements()
 
     //Caja de text para pruebas
     globals.txtPruebas = document.getElementById('txtPruebas');
+}
+
+function initLevel()
+{
+    
 }
