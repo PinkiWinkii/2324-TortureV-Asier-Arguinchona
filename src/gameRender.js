@@ -27,8 +27,9 @@ function loadPlaying()
 
 function renderGame()
 {
-
    const SCORE = globals.score;
 
-   globals.ctx.fillSt
+   globals.ctx.fillStyle = 'white';
+   globals.ctx.fillText(SCORE, 15, 8); 
+
 }

@@ -14,6 +14,8 @@ function init()
     //Inicializamos el mapa del juego
     initLevel();
 
+    console.log("AQUI TA");
+
     //Inicializacion de timers
     initTimers();
 

@@ -4,6 +4,9 @@ import { Level, Level1 } from "./Levels.js";
 
 import Timer from "./Timer.js";
 
+import { Game, FPS } from "./constants.js";
+
+
 //Función que inicializa los elementos HTML
 function initHTMLelements()
 {
@@ -19,6 +22,17 @@ function initHTMLelements()
     globals.txtPruebas = document.getElementById('txtPruebas');
 }
 
+function initVars()
+{
+        //Inicializamos las variables de gestión de tiempo
+        globals.previousCycleMilliseconds = 0;
+        globals.deltaTime = 0;
+        globals.frameTimeObj = 1 / FPS; //Frame time in seconds
+    
+        //Inicializamos el estado del juego
+        globals.gameState = Game.PLAYING;
+}
+
 function initLevel()
 {
     //Creamos y guardamos nuestro nivel
@@ -28,8 +42,8 @@ function initLevel()
 function initEvents()
 {
     //Add the keyboard event listeners
-    window.addEventListener("keydown",  keydownHandler,  false);
-    window.addEventListener("keyup",    keyupHandler,    false);
+    // window.addEventListener("keydown",  keydownHandler,  false);
+    // window.addEventListener("keyup",    keyupHandler,    false);
 }
 
 function initTimers()
@@ -42,5 +56,6 @@ export {
     initHTMLelements,
     initLevel,
     initEvents,
-    initTimers
+    initTimers, 
+    initVars
 }
