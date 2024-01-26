@@ -67,6 +67,11 @@ function updateElement(element)
         case ID.MONEY_ID:
             updateMoney(element);
             break;
+
+        case ID.SPIDER_ID:
+            updateSpider(element);
+            break;
+
         default:
             console.log("Not a valid ID");
     }
@@ -74,11 +79,16 @@ function updateElement(element)
 
 function updateMoney(element)
 {
+    //console.log("ESTA UPDATEANDO EL MONEY");
     checkIfIsCollidingWithPlayer(element);
-    console.log("ESTA UPDATEANDO EL MONEY");
+
 }
 
+function updateSpider(element)
+{
 
+    checkIfIsCollidingWithPlayer(element);
+}
 
 function updatePlayer(element)
 {
@@ -257,12 +267,17 @@ function checkIfIsCollidingWithPlayer(element)
             if(element.xPos === player.xPos && element.yPos === player.yPos)
             {
                 element.state = State.OFF;
-                console.log("COLISONA CON PLAYER");
                 globals.score += 100;
                 initMoney();
             }
             break;
         case ID.SPIDER_ID:
+            if(element.xPos === player.xPos && element.yPos === player.yPos)
+            {
+                globals.life--;
+                resetVariables();
+                globals.gameState = Game.LOAD_PLAYING;
+            }
             //Colisiona con la araña
             break;
 
@@ -270,6 +285,11 @@ function checkIfIsCollidingWithPlayer(element)
             break;
     }
 
+}
+
+function resetVariables()
+{
+    globals.gameElements = [];
 }
 
 export function checkearZero()

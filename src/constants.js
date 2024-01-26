@@ -4,6 +4,11 @@ export const moneyPos = {
     yPos: [1, 4, 10, 1, 4, 10],
 }
 
+export const spiderPos = {
+    xPos: [1, 15, 1, 15],
+    yPos: [1, 10, 1, 10],
+}
+
 export const State = {
     OFF: -1,
     STILL: 1,

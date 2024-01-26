@@ -34,4 +34,7 @@ export default{
 
     //Game elements
     gameElements: [],
+
+    //Variable de la vida
+    life: 3,
 }

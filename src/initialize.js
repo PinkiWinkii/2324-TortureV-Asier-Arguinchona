@@ -1,7 +1,7 @@
 import globals from "./globals.js";
 import { Level, Level1 } from "./Levels.js";
 import Timer from "./Timer.js";
-import { Game, FPS, State, ID, Icons, moneyPos} from "./constants.js";
+import { Game, FPS, State, ID, Icons, moneyPos, spiderPos} from "./constants.js";
 import Player from "./Element.js";
 import { keydownHandler, keyupHandler } from "./events.js";
 import Element from "./Element.js";
@@ -38,6 +38,7 @@ function initVars()
         moveUp: false,
         moveDown: false,
     }
+
 }
 
 function initLevel()
@@ -59,6 +60,7 @@ function initGameElements()
 
     initPlayer();
     initMoney();
+    initSpider();
     //console.log(globals.gameElements);
 }
 
@@ -86,7 +88,7 @@ function initPlayer()
 
 function initMoney()
 {
-    console.log("init money");
+    //console.log("init money");
 
     const randomSpawn = Math.floor(Math.random() * 6);
 
@@ -103,6 +105,26 @@ function initMoney()
     //Creamos el elemento
     const money = new Element(id, state, icon, xInit, yInit, xPos, yPos);
     globals.gameElements.push(money);
+}
+
+function initSpider()
+{
+    console.log("init spider");
+    const randomSpawn = Math.floor(Math.random() * 4);
+
+    const xInit = spiderPos.xPos[randomSpawn];
+    const yInit = spiderPos.yPos[randomSpawn];
+
+    const xPos = xInit;
+    const yPos = yInit;
+
+    const state = State.STILL;
+    const id = ID.SPIDER_ID;
+    const icon = Icons.SPIDER;
+
+    const spider = new Element(id, state, icon, xInit, yInit, xPos, yPos);
+
+    globals.gameElements.push(spider);
 }
 
 function initTimers()
