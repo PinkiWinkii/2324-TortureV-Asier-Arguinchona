@@ -6,6 +6,7 @@ import Timer from "./Timer.js";
 
 import { Game, FPS } from "./constants.js";
 
+import Player from "./Player.js";
 
 //Función que inicializa los elementos HTML
 function initHTMLelements()
@@ -52,10 +53,29 @@ function initTimers()
     globals.levelTime = new Timer(180, 1);
 }
 
+function initGameElements()
+{
+    initPlayer();
+}
+
+function initPlayer()
+{
+    const xInit = 7;
+    const yInit = 8;
+
+    const xPos = xInit;
+    const yPos = yInit;
+
+    const player = new Player(xInit, yInit, xPos, yPos);
+
+    globals.gameElements.push(player);
+}
+
 export {
     initHTMLelements,
     initLevel,
     initEvents,
     initTimers, 
-    initVars
+    initVars,
+    initGameElements
 }

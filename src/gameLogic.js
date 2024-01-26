@@ -1,5 +1,6 @@
 import globals from "./globals.js";
 import { Game, Key } from "./constants.js";
+import { initGameElements } from "./initialize.js";
 
 export default function update()
 {
@@ -15,5 +16,6 @@ export default function update()
 
 function playGame()
 {
+    initGameElements();
     //console.log("ESTAMOS EN PLAYGAME");
 }

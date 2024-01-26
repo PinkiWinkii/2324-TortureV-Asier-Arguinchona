@@ -21,6 +21,9 @@ export const Tile = {
 export const Map = {
     NUM_FIL: 12,
     NUM_COL: 17,
+    BRICKSIZE: 16,
+    X_OFFSET: 30,
+    Y_OFFSET: 50,
 };
 
 export const Block = {
