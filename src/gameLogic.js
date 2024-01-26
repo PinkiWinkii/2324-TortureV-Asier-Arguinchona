@@ -14,6 +14,10 @@ export default function update()
             playGame()
             break;
 
+        case Game.OVER:
+            //SE ha acabado la partida
+            break;
+            
         default:
             break;
     }
@@ -29,9 +33,18 @@ function loadPlaying()
 
 function playGame()
 {
+    checkIfGameOver();
     //console.log("ESTAMOS EN PLAYGAME");
     updateElements();
 
+}
+
+function checkIfGameOver()
+{
+    if(globals.life <= 0)
+    {
+        globals.gameState = Game.OVER;
+    }
 }
 
 function updateElements()
