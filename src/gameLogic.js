@@ -74,36 +74,89 @@ function updatePlayer(element)
 
     //console.log("UPDATE PLAYER");
 
+    //Detectar colisiones
+    detectCollisions(element);
+
     readKeyboardAndMovePlayer(element)
 
-    switch(element.state)
+    if(!element.canMove)
     {
-        case State.RIGHT:
-            element.xPos += 1;
-            break; 
-        
-        case State.LEFT:
-            element.xPos -= 1;
-            break;
-        
-        case State.UP:
-            element.yPos -= 1
-            break;
-
-        case State.DOWN:
-            element.yPos += 1;
-            break;
-        
-        case State.STILL:
-            //No se mueve
-            break;
-        default:
-            //A rellenar
-            break;
+        checkIfCanMove(element);
     }
 
-    console.log(element.state);
+
+    if(element.canMove)
+    {
+        switch(element.state)
+        {
+            case State.RIGHT:
+                if(!element.isCollidingWithRight)
+                {
+                    element.xPos += 1;
+                    element.canMove = false;
+                }
+                break; 
+            
+            case State.LEFT:
+                if(!element.isCollidingWithLeft)
+                {
+                    element.xPos -= 1;
+                    element.canMove = false;
+                }
+                break;
+            
+            case State.UP:
+                if(!element.isCollidingWithTop)
+                {
+                    element.yPos -= 1
+                    element.canMove = false;
+                }
+                break;
+    
+            case State.DOWN:
+                if(!element.isCollidingWithBottom)
+                {
+                    element.yPos += 1;
+                    element.canMove = false;
+                }
+                break;
+            
+            case State.STILL:
+                //No se mueve
+                break;
+            default:
+                //A rellenar
+                break;
+        }
+    }
+
+
+    //console.log(element.state);
     //console.log(globals.action);
+}
+
+function checkIfCanMove(element)
+{
+    //Incrementamos el contador de cambio de valor
+    globals.movementTime.timeChangeCounter += globals.deltaTime;
+
+    //Si ha pasado el tiempo necesario, cambiamos el valor del timer
+    if(globals.movementTime.timeChangeCounter > globals.movementTime.timeChangeValue)
+    {
+
+        globals.movementTime.value--;
+
+        //Reseteamos timeChanegCounter
+        globals.movementTime.timeChangeCounter = 0;
+    }
+
+
+    if(globals.movementTime.value < 0)
+    {
+        element.canMove = true;     
+        
+        globals.movementTime.value = 0.2;
+    }
 }
 
 function readKeyboardAndMovePlayer(element)
@@ -129,4 +182,59 @@ function readKeyboardAndMovePlayer(element)
     {
         element.state = State.STILL;
     }
+}
+
+function detectCollisions(element)
+{
+    const levelData = globals.level.data;
+
+    console.log(levelData[element.yPos][element.xPos]);
+
+    if(levelData[element.yPos + 1][element.xPos] === 1)
+    {
+        element.isCollidingWithBottom = true;
+        console.log("MURO ABAJO");
+    }
+    else
+    {
+        element.isCollidingWithBottom = false;
+        console.log("NO HAY MURO ABAJO");
+    }
+
+    if(levelData[element.yPos - 1][element.xPos] === 1)
+    {
+        element.isCollidingWithTop = true;
+        console.log("MURO ARRIBA");
+    }
+    else
+    {
+        element.isCollidingWithTop = false;
+        console.log("NO HAY MURO ARRIBA");
+    }
+
+    if(levelData[element.yPos][element.xPos + 1] === 1)
+    {
+        element.isCollidingWithRight = true;
+        console.log("MURO DERECHA");
+    }
+    else
+    {
+        element.isCollidingWithRight = false;
+        console.log("NO HAY MURO DERECHA");
+    }
+
+    if(levelData[element.yPos][element.xPos - 1] === 1)
+    {
+        element.isCollidingWithLeft = true;
+        console.log("MURO IZQUIERDA");
+    }
+    else
+    {
+        element.isCollidingWithLeft = false;
+        console.log("NO HAY MURO IZQUIERDA");
+    }
+    //console.log(levelData[element.xPos + 1][levelData[element.yPos]]);
+
+
+
 }

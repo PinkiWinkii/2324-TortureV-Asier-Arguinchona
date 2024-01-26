@@ -9,5 +9,10 @@ export default class Element
         this.yInit  = yInit;
         this.xPos   = xPos;
         this.yPos   = yPos;
+        this.isCollidingRight   = false;
+        this.isCollidingLeft    = false;
+        this.isCollidingTop     = false;
+        this.isCollidingBottom  = false;
+        this.canMove            = true;
     }
 }

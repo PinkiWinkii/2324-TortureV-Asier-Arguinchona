@@ -52,13 +52,6 @@ function initEvents()
     window.addEventListener("keyup",    keyupHandler,    false);
 }
 
-function initTimers()
-{
-    //Creamos timer 
-    globals.movementTime = new Timer(0.2, 1);
-    globals.levelTime = new Timer(180, 1);
-}
-
 function initGameElements()
 {
     //console.log("INIT ELEMENTS");
@@ -89,6 +82,12 @@ function initPlayer()
     globals.gameElements.push(player);
 }
 
+function initTimers()
+{
+    //Creamos timer 
+    globals.movementTime = new Timer(0.2, 0.1);
+    globals.levelTime = new Timer(180, 1);
+}
 
 
 export {
