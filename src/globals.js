@@ -36,5 +36,5 @@ export default{
     gameElements: [],
 
     //Variable de la vida
-    life: 3,
+    life: 1,
 }

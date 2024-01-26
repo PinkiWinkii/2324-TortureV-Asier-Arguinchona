@@ -27,8 +27,8 @@ function renderOver()
     //Borramos la pantalla entera
     globals.ctx.clearRect(0,0, globals.canvas.width, globals.canvas.height);
 
-    globals.fillStyle = 'red';
-    globals.ctx.fillText("GAME OVER", 100, 150)
+    globals.ctx.fillStyle = 'red';
+    globals.ctx.fillText("GAME OVER", 110, 120);
 }
 
 function loadPlaying()
